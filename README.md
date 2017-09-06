@@ -1,6 +1,6 @@
 # `untagged-option`
 
-[![Build Status](https://travis-ci.org/jonas-schievink/untagged-option.svg?branch=master)](https://travis-ci.org/jonas-schievink/untagged-option)
+[![Build Status](https://travis-ci.org/jonas-schievink/untagged-option.svg?branch=master)](https://travis-ci.org/jonas-schievink/untagged-option) [![Crates.io](https://img.shields.io/crates/v/untagged-option.svg)](https://crates.io/crates/untagged-option) [![](https://docs.rs/untagged-option/badge.svg)](https://docs.rs/untagged-option)
 
 This crate provides the `UntaggedOption` type, an unsafe alternative to the existing `Option`.
 
