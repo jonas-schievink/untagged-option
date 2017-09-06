@@ -1,5 +1,7 @@
 # `untagged-option`
 
+[![Build Status](https://travis-ci.org/jonas-schievink/untagged-option.svg?branch=master)](https://travis-ci.org/jonas-schievink/untagged-option)
+
 This crate provides the `UntaggedOption` type, an unsafe alternative to the existing `Option`.
 
 In contrast to `Option`, `UntaggedOption` does not have a discriminant and thus does not know whether it contains a value or not, which makes the type very unsafe to use. It's the user's responsibility to only call `UntaggedOption`'s methods when appropriate.
