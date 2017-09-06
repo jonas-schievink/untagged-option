@@ -50,8 +50,8 @@ use core::mem::replace;
 /// the previously contained value (if any).
 #[allow(unions_with_drop_fields)]
 pub union UntaggedOption<T> {
-    some: T,
-    none: (),
+    pub some: T,
+    pub none: (),
 }
 
 impl<T> UntaggedOption<T> {
