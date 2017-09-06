@@ -1,0 +1,18 @@
+[package]
+name = "untagged-option"
+version = "0.1.0"
+authors = ["Jonas Schievink <jonasschievink@gmail.com>"]
+description = """
+An unsafe Option type without discriminant. Nightly only.
+"""
+keywords = ["no_std", "option", "union", "untagged", "tagless"]
+categories = ["data-structures", "no-std"]
+readme = "README.md"
+documentation = "https://docs.rs/untagged-option"
+repository = "https://github.com/jonas-schievink/untagged-option.git"
+license = "CC0-1.0"
+
+# cargo-release configuration
+[package.metadata.release]
+tag-message = "{{version}}"
+no-dev-version = true
