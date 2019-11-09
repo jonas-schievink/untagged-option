@@ -2,11 +2,11 @@
 //!
 //! Nightly-only. `#![no_std]`.
 
-#![feature(untagged_unions, const_fn)]
+#![feature(untagged_unions)]
 
 #![no_std]
 
-use core::mem::replace;
+use core::mem::{replace, ManuallyDrop};
 
 /// A union which either holds a `T` or nothing.
 ///
@@ -50,8 +50,8 @@ use core::mem::replace;
 /// the previously contained value (if any).
 #[allow(unions_with_drop_fields)]
 pub union UntaggedOption<T> {
-    pub some: T,
-    pub none: (),
+    some: ManuallyDrop<T>,
+    none: (),
 }
 
 impl<T> UntaggedOption<T> {
@@ -72,7 +72,7 @@ impl<T> UntaggedOption<T> {
     /// `take` if you need `t` to be dropped properly.
     pub const fn some(t: T) -> Self {
         UntaggedOption {
-            some: t,
+            some: ManuallyDrop::new(t),
         }
     }
 
@@ -87,7 +87,7 @@ impl<T> UntaggedOption<T> {
     ///
     /// [`UntaggedOption::some`]: #method.some
     pub unsafe fn take(&mut self) -> T {
-        replace(self, UntaggedOption::none()).some
+        ManuallyDrop::into_inner(replace(self, UntaggedOption::none()).some)
     }
 
     /// Obtains an immutable reference to the contained `T`.
